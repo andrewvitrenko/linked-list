@@ -1,0 +1,11 @@
+### IDE ###
+/.idea/
+
+### Modules ###
+/node_modules/
+
+### Tests ###
+/coverage/
+
+### Build ###
+/dist/
