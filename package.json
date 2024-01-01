@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --passWithNoTests",
+    "test:dev": "jest --coverage --passWithNoTests --watchAll",
     "dev": "ts-node ./src/index.ts",
     "build": "tsc",
     "lint": "eslint ./src/",

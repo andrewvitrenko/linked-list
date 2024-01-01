@@ -3,8 +3,8 @@ import { ListItem } from '../list-item';
 export type MapFunc<T> = (elem: T, index: number) => boolean;
 
 export class List<T> {
-  head: ListItem<T> | null;
-  tail: ListItem<T> | null;
+  private head: ListItem<T> | null;
+  private tail: ListItem<T> | null;
   private size: number;
 
   constructor() {
@@ -44,6 +44,14 @@ export class List<T> {
     this.checkIndex(index);
 
     /**
+     * Setting to `size` index or to empty list means simple adding element
+     * */
+    if (index === this.size) {
+      this.add(data);
+      return;
+    }
+
+    /**
      * When inserting to 0 position
      * we need to redefine head
      * */
@@ -53,14 +61,6 @@ export class List<T> {
       this.head = item;
 
       this.size++;
-      return;
-    }
-
-    /**
-     * Setting to `size` index or to empty list means simple adding element
-     * */
-    if (index === this.size) {
-      this.add(data);
       return;
     }
 
@@ -219,7 +219,7 @@ export class List<T> {
      * Start with second element in the list
      * */
     let prev = this.head!;
-    let current = this.head?.next;
+    let current = this.head!.next;
 
     /**
      * Iterate all elements except head and tail
